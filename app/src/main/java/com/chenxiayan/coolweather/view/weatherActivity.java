@@ -1,5 +1,6 @@
 package com.chenxiayan.coolweather.view;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Build;
@@ -24,6 +25,7 @@ import com.bumptech.glide.util.Util;
 import com.chenxiayan.coolweather.R;
 import com.chenxiayan.coolweather.gson.Forecast;
 import com.chenxiayan.coolweather.gson.Weather;
+import com.chenxiayan.coolweather.service.AutoUpdateService;
 import com.chenxiayan.coolweather.util.HttpUtil;
 import com.chenxiayan.coolweather.util.Utility;
 
@@ -259,5 +261,7 @@ public class weatherActivity extends AppCompatActivity {
          * 显示出来
          */
         weatherLayout.setVisibility(View.VISIBLE);
+        Intent intent = new Intent(this, AutoUpdateService.class);
+        startService(intent);
     }
 }
